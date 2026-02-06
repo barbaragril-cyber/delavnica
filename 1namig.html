@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8">
+  <title>Namig – Kako iz 0 in 1 dobimo število?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; padding: 24px; }
+    .box {
+      max-width: 800px;
+      margin: auto;
+      border: 2px dashed #666;
+      border-radius: 16px;
+      padding: 20px;
+    }
+    h1 { margin-top: 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 1.05rem;
+    }
+    th, td {
+      border: 1px solid #999;
+      padding: 8px;
+      text-align: center;
+    }
+    th { background: #f0f0f0; }
+    .on { background: #e8f5e9; font-weight: bold; }
+    .off { background: #f5f5f5; color: #777; }
+    .sum {
+      margin-top: 6px;
+      font-weight: bold;
+    }
+    .note {
+      background: #f7f7f7;
+      padding: 12px;
+      border-radius: 10px;
+      margin-top: 16px;
+    }
+    a { display: inline-block; margin-top: 16px; }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h1>Namig 💡 Kako računalnik zapiše števila?</h1>
+
+  <p>
+    Računalnik uporablja samo <strong>0</strong> in <strong>1</strong>.  
+    Vsako mesto v zapisu ima svojo vrednost.
+  </p>
+
+  <table>
+    <tr>
+      <th>16</th>
+      <th>8</th>
+      <th>4</th>
+      <th>2</th>
+      <th>1</th>
+    </tr>
+  </table>
+
+  <p><strong>Pravilo:</strong></p>
+  <ul>
+    <li><strong>1</strong> → to vrednost <strong>upoštevamo</strong></li>
+    <li><strong>0</strong> → te vrednosti <strong>ne upoštevamo</strong></li>
+  </ul>
+
+  <h2>Primer 1</h2>
+  <p>Binarni zapis: <code>00101</code></p>
+
+  <table>
+    <tr>
+      <th>16</th><th>8</th><th>4</th><th>2</th><th>1</th>
+    </tr>
+    <tr>
+      <td class="off">0</td>
+      <td class="off">0</td>
+      <td class="on">1</td>
+      <td class="off">0</td>
+      <td class="on">1</td>
+    </tr>
+  </table>
+
+  <div class="sum">Seštevek: 4 + 1 = 5</div>
+
+  <h2>Primer 2</h2>
+  <p>Binarni zapis: <code>01010</code></p>
+
+  <table>
+    <tr>
+      <th>16</th><th>8</th><th>4</th><th>2</th><th>1</th>
+    </tr>
+    <tr>
+      <td class="off">0</td>
+      <td class="on">1</td>
+      <td class="off">0</td>
+      <td class="on">1</td>
+      <td class="off">0</td>
+    </tr>
+  </table>
+
+  <div class="sum">Seštevek: 8 + 2 = 10</div>
+
+  <h2>Primer 3</h2>
+  <p>Binarni zapis: <code>10000</code></p>
+
+  <table>
+    <tr>
+      <th>16</th><th>8</th><th>4</th><th>2</th><th>1</th>
+    </tr>
+    <tr>
+      <td class="on">1</td>
+      <td class="off">0</td>
+      <td class="off">0</td>
+      <td class="off">0</td>
+      <td class="off">0</td>
+    </tr>
+  </table>
+
+  <div class="sum">Seštevek: 16</div>
+
+  <div class="note">
+    Ti primeri niso rešitev tvoje naloge.  
+    Prikazujejo <strong>kako</strong> iz zapisa 0 in 1 dobiš navadno število.
+  </div>
+
+  <a href="1postaja.html">⬅ Nazaj na nalogo</a>
+</div>
+
+</body>
+</html>
+

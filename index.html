@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8">
+  <title>QR misija</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family: system-ui, Arial, sans-serif;
+      background: url("virus.png") center/cover no-repeat fixed;
+      overflow:hidden;
+    }
+
+    /* rahla zatemnitev */
+    .overlay{
+      position:absolute;
+      inset:0;
+      background: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.35));
+    }
+
+    /* majhen opis zgoraj desno */
+    .info{
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      max-width: 360px;
+      background: rgba(0,0,0,.55);
+      color: #fff;
+      padding: 14px 16px;
+      border-radius: 14px;
+      font-size: .95rem;
+      line-height: 1.4;
+      backdrop-filter: blur(3px);
+    }
+
+    .info h1{
+      font-size: 1.2rem;
+      margin: 0 0 6px 0;
+    }
+
+    /* klikabilna plast */
+    #tapLayer{
+      position:absolute;
+      inset:0;
+      cursor:pointer;
+    }
+
+    /* gumb */
+    #scanBtn{
+      display:none;
+      position:absolute;
+      left:50%;
+      bottom:14%;
+      transform:translateX(-50%);
+      padding:14px 20px;
+      border-radius:18px;
+      border:0;
+      font-size:1.1rem;
+      font-weight:800;
+      background:#fff;
+      color:#111;
+      box-shadow:0 10px 30px rgba(0,0,0,.4);
+      cursor:pointer;
+    }
+
+    /* skener */
+    #scanner{
+      display:none;
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      width:min(420px, 92vw);
+      background: rgba(0,0,0,.7);
+      border-radius:18px;
+      padding:14px;
+      color:#fff;
+      backdrop-filter: blur(4px);
+    }
+
+    #reader{ width:100%; }
+    #status{ margin-top:8px; font-weight:700; text-align:center; }
+  </style>
+</head>
+
+<body>
+
+<!-- VSE, kar je "index UI", je v tem wrapperju, da ga lahko skrijemo -->
+<div id="indexUI">
+  <div class="overlay"></div>
+
+  <div class="info">
+    <h1>QR misija</h1>
+    Računalniški sistem šole ima težave.  
+    Z reševanjem nalog boste postopoma popravili sistem.
+    <br><br>
+    👉 Klikni kjerkoli na sliko.
+  </div>
+
+  <div id="tapLayer" aria-label="Začni misijo"></div>
+
+  <button id="scanBtn" type="button">📷 Skeniraj QR kodo</button>
+</div>
+
+<!-- Skener je ločeno, da ostane viden, ko indexUI skrijemo -->
+<div id="scanner" aria-label="Skeniranje QR kode">
+  <div id="reader"></div>
+  <div id="status">Status: pripravljeno</div>
+</div>
+
+<script src="https://unpkg.com/html5-qrcode"></script>
+<script>
+  const indexUI  = document.getElementById("indexUI");
+  const tapLayer = document.getElementById("tapLayer");
+  const scanBtn  = document.getElementById("scanBtn");
+  const scanner  = document.getElementById("scanner");
+  const statusEl = document.getElementById("status");
+
+  let qr = null;
+
+  tapLayer.onclick = () => {
+    scanBtn.style.display = "block";
+  };
+
+  scanBtn.onclick = async () => {
+    // "zapre" index (ga skrije) – ostane samo skener
+    indexUI.style.display = "none";
+
+    scanner.style.display = "block";
+    statusEl.textContent = "Status: zaganjam kamero …";
+
+    try {
+      if (!qr) qr = new Html5Qrcode("reader");
+
+      await qr.start(
+        { facingMode: "environment" },
+        { fps: 10, qrbox: 220 },
+        () => {
+          // Ne glede na vsebino QR: vedno pojdi na Postajo 1
+          window.location.href = "1postaja.html";
+        }
+      );
+
+      statusEl.textContent = "Status: usmeri QR kodo v okvir";
+    } catch (e) {
+      statusEl.textContent = "Status: kamera ni na voljo (dovoli dostop do kamere)";
+    }
+  };
+</script>
+
+</body>
+</html>
+
+
