@@ -14,141 +14,140 @@
       overflow:hidden;
     }
 
-    /* rahla zatemnitev */
+    /* rahla zatemnitev – skrita na začetku */
     .overlay{
       position:absolute;
       inset:0;
-      background: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.35));
+      background: linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.35));
+      display:none;
     }
 
-    /* majhen opis zgoraj desno */
+    /* INFO OKNO – skrito na začetku */
     .info{
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      max-width: 360px;
-      background: rgba(0,0,0,.55);
-      color: #fff;
-      padding: 14px 16px;
-      border-radius: 14px;
-      font-size: .95rem;
-      line-height: 1.4;
+      position:absolute;
+      top:20px;
+      right:20px;
+      max-width:460px;
+      background:rgba(0,0,0,.55);
+      color:#fff;
+      padding:20px 22px;
+      border-radius:18px;
+      font-size:1.05rem;
+      line-height:1.5;
       backdrop-filter: blur(3px);
+      z-index:5;
+      display:none;
     }
 
     .info h1{
-      font-size: 1.2rem;
-      margin: 0 0 6px 0;
+      font-size:1.4rem;
+      margin:0 0 10px 0;
+    }
+	
+	.info h2{
+      font-size:1.4rem;
+      margin:0 0 10px 0;
     }
 
-    /* klikabilna plast */
+    /* QR koda – vidna takoj, a diskretna */
+	
+	#hiddenQR{
+	  position:absolute;
+	  left:22%;
+	  top:56%;
+	  width:95px;
+	  opacity:0.55;
+	  transform: rotate(-2deg);
+	  z-index:20;              /* <- KLJUČNO (mora biti > tapLayer) */
+
+	  background: rgba(255,255,255,0.85);
+	  padding:6px;
+	  border-radius:8px;
+
+	  box-shadow: 0 4px 14px rgba(0,0,0,.35);
+	  filter: saturate(0.85) contrast(0.9);
+	  transition: all 0.25s ease;
+	}
+
+
+	/* OB PRELETU MIŠKE / DOTIKU */
+	#hiddenQR:hover,
+	#hiddenQR:active{
+	opacity:1;
+	transform: rotate(0deg) scale(1.15);   /* poravna in poveča */
+	background: #ffffff;                  /* POLNO BELO OZADJE */
+	filter: none;
+
+	box-shadow:
+		0 0 0 6px rgba(255,255,255,0.9),     /* bel rob */
+		0 10px 30px rgba(0,0,0,0.45);        /* globina */
+	}
+
+
+    /* klik plast */
     #tapLayer{
       position:absolute;
       inset:0;
       cursor:pointer;
+      z-index:10;
     }
-
-    /* gumb */
-    #scanBtn{
-      display:none;
-      position:absolute;
-      left:50%;
-      bottom:14%;
-      transform:translateX(-50%);
-      padding:14px 20px;
-      border-radius:18px;
-      border:0;
-      font-size:1.1rem;
-      font-weight:800;
-      background:#fff;
-      color:#111;
-      box-shadow:0 10px 30px rgba(0,0,0,.4);
-      cursor:pointer;
-    }
-
-    /* skener */
-    #scanner{
-      display:none;
-      position:absolute;
-      left:50%;
-      top:50%;
-      transform:translate(-50%,-50%);
-      width:min(420px, 92vw);
-      background: rgba(0,0,0,.7);
-      border-radius:18px;
-      padding:14px;
-      color:#fff;
-      backdrop-filter: blur(4px);
-    }
-
-    #reader{ width:100%; }
-    #status{ margin-top:8px; font-weight:700; text-align:center; }
   </style>
 </head>
 
 <body>
 
-<!-- VSE, kar je "index UI", je v tem wrapperju, da ga lahko skrijemo -->
-<div id="indexUI">
-  <div class="overlay"></div>
+<!-- QR koda je takoj vidna -->
+<img
+  id="hiddenQR"
+  src="1QR_Code.png"
+  alt="QR koda za prvo postajo">
 
-  <div class="info">
-    <h1>QR misija</h1>
-    Računalniški sistem šole ima težave.  
-    Z reševanjem nalog boste postopoma popravili sistem.
-    <br><br>
-    👉 Klikni kjerkoli na sliko.
-  </div>
 
-  <div id="tapLayer" aria-label="Začni misijo"></div>
+<!-- klik kjerkoli sproži besedilo -->
+<div id="tapLayer" aria-label="Prikaži navodila"></div>
 
-  <button id="scanBtn" type="button">📷 Skeniraj QR kodo</button>
+<!-- zatemnitev (se pojavi ob kliku) -->
+<div class="overlay" id="overlay"></div>
+
+<!-- INFO OKNO (se pojavi ob kliku) -->
+<div class="info" id="info">
+  <h1>QR misija – rešimo šolo</h1>
+  <h2>Računalniški virus povzroča težave v šoli ⚠️</h2>
+
+  <p>
+    V šolskem računalniškem sistemu je prišlo do napake.  
+    Računalniški virus je zmešal podatke in sistem ne deluje pravilno.
+  </p>
+
+  <p>
+    Tvoja ekipa bo s pomočjo <strong>QR-kod</strong> raziskovala šolo in reševala računalniške uganke.  
+    Vsaka pravilno rešena naloga bo popravila <strong>en del sistema</strong>.
+  </p>
+
+  <p>
+    Le če boste delali natančno, logično in kot pravi računalniki,
+    bo sistem spet deloval pravilno.
+  </p>
+
+  <p>
+    👉 <strong>Začni misijo</strong>: poišči QR-kodo na sliki in jo skeniraj.
+  </p>
 </div>
 
-<!-- Skener je ločeno, da ostane viden, ko indexUI skrijemo -->
-<div id="scanner" aria-label="Skeniranje QR kode">
-  <div id="reader"></div>
-  <div id="status">Status: pripravljeno</div>
-</div>
 
-<script src="https://unpkg.com/html5-qrcode"></script>
 <script>
-  const indexUI  = document.getElementById("indexUI");
   const tapLayer = document.getElementById("tapLayer");
-  const scanBtn  = document.getElementById("scanBtn");
-  const scanner  = document.getElementById("scanner");
-  const statusEl = document.getElementById("status");
+  const overlay  = document.getElementById("overlay");
+  const info     = document.getElementById("info");
 
-  let qr = null;
+  let shown = false;
 
-  tapLayer.onclick = () => {
-    scanBtn.style.display = "block";
-  };
-
-  scanBtn.onclick = async () => {
-    // "zapre" index (ga skrije) – ostane samo skener
-    indexUI.style.display = "none";
-
-    scanner.style.display = "block";
-    statusEl.textContent = "Status: zaganjam kamero …";
-
-    try {
-      if (!qr) qr = new Html5Qrcode("reader");
-
-      await qr.start(
-        { facingMode: "environment" },
-        { fps: 10, qrbox: 220 },
-        () => {
-          // Ne glede na vsebino QR: vedno pojdi na Postajo 1
-          window.location.href = "1postaja.html";
-        }
-      );
-
-      statusEl.textContent = "Status: usmeri QR kodo v okvir";
-    } catch (e) {
-      statusEl.textContent = "Status: kamera ni na voljo (dovoli dostop do kamere)";
-    }
-  };
+  tapLayer.addEventListener("click", () => {
+    if (shown) return;
+    overlay.style.display = "block";
+    info.style.display = "block";
+    shown = true;
+  });
 </script>
 
 </body>

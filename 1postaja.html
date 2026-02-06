@@ -17,23 +17,33 @@
 <body>
 
 <div class="box">
-  <h1>Postaja 1 – Sistem šole je v okvari ⚠️</h1>
+  <h1>Popravilo 1 – Okvara sistema ⚠️</h1>
 
-  <p>
-    Šolski računalniški sistem ima težave.  
-    Najprej moramo popraviti <strong>del za števila</strong>.
-  </p>
+<p>
+  Šolski računalniški sistem ne deluje pravilno.  
+  Virus je povzročil, da računalnik trenutno razume samo še <strong>0</strong> in <strong>1</strong>.
+</p>
 
-  <p>
-    Računalnik uporablja samo <strong>0 in 1</strong>.  
-    Iz spodnjega zapisa dobi pravo število:
-  </p>
+<p>
+  Najprej moramo popraviti <strong>del sistema, ki skrbi za števila</strong>.
+</p>
 
-  <pre style="text-align:center; font-size:1.4rem;">10110</pre>
+<p>
+  Računalnik ne razmišlja kot mi –  
+  vse podatke pretvori v zapise z <strong>0</strong> in <strong>1</strong>.
+</p>
 
-  <p>
-    Pretvori zapis v <strong>navadno število</strong> in ga vpiši spodaj.
-  </p>
+<p>
+  Spodaj vidiš računalniški zapis:
+</p>
+
+<pre style="text-align:center; font-size:1.4rem;">10110</pre>
+
+<p>
+  Tvoja naloga je, da ta zapis <strong>pretvoriš v navadno število</strong>.  
+  Ko ga izračunaš, ga vpiši spodaj in s tem popravi prvi del sistema.
+</p>
+
 
   <label for="answer"><strong>Vpiši število:</strong></label>
   <input id="answer" type="number" inputmode="numeric">
@@ -53,7 +63,7 @@
     if (vnos === "22") {
       msg.innerHTML =
         "✅ Pravilen rezultat!<br>" +
-        "👉 Pojdite v <strong>učilnico št. 22</strong> in tam poiščite naslednjo QR-kodo.";
+        "👉 Pojdite v <strong>učilnico št. 22</strong> (glejte načrt šole) in tam poiščite naslednjo QR-kodo.";
       msg.style.color = "green";
     } else {
       msg.textContent = "❌ To še ni pravo število. Poskusi znova.";
