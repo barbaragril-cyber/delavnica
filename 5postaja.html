@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Postaja 5 – Dostop s kodo</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:rgba(255,255,255,.06);
+      --border:rgba(255,255,255,.12);
+      --text:#e8eefc;
+      --muted:#b9c4e6;
+      --ok:#22c55e;
+      --bad:#ef4444;
+    }
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family: system-ui, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 20% 20%, rgba(96,165,250,.18), transparent 60%),
+        radial-gradient(700px 420px at 80% 35%, rgba(34,197,94,.14), transparent 60%),
+        linear-gradient(180deg, #070b14, #0b1220 55%, #070b14);
+      padding:24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .wrap{ width:min(900px, 100%); }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:18px;
+      backdrop-filter: blur(6px);
+    }
+    h1{ margin:0 0 8px; font-size: clamp(1.35rem, 2.8vw, 1.9rem); }
+    p{ margin: 10px 0; }
+    .muted{ color:var(--muted); }
+
+    .row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:12px; }
+    input{
+      width: 240px;
+      max-width:100%;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.35);
+      color: var(--text);
+      font-size:1.05rem;
+      letter-spacing:.06em;
+      outline:none;
+    }
+    input:focus{
+      box-shadow: 0 0 0 4px rgba(96,165,250,.18);
+    }
+    button{
+      padding:12px 16px;
+      border-radius:12px;
+      border:1px solid rgba(96,165,250,.65);
+      background: rgba(96,165,250,.18);
+      color: var(--text);
+      font-weight:800;
+      cursor:pointer;
+    }
+    .msg{
+      margin-top:12px;
+      font-weight:800;
+      padding:10px 12px;
+      border-radius:12px;
+      display:none;
+    }
+    .msg.ok{ display:block; background: rgba(34,197,94,.16); border:1px solid rgba(34,197,94,.35); }
+    .msg.bad{ display:block; background: rgba(239,68,68,.16); border:1px solid rgba(239,68,68,.35); }
+
+    /* zaklenjeno/odklenjeno */
+    #content{ display:none; margin-top:14px; }
+    #content .box{
+      border:1px dashed rgba(255,255,255,.22);
+      border-radius:16px;
+      padding:14px;
+      background: rgba(0,0,0,.22);
+    }
+    ul{ margin: 8px 0 0 18px; }
+    li{ margin: 6px 0; }
+	
+	.icons{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin:14px 0;
+  align-items:center;
+}
+.icons img{
+  height:80px;
+  width:auto;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,.6));
+}
+.icons.small img{ height:60px; }
+.center{ justify-content:center; }
+
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+
+      <!-- ZAKLENJENO: samo koda -->
+      <div id="lock">
+        <h1>🔒 Dostop s kodo</h1>
+		<div class="icons left">
+  <img src="Mr_Virus.png" alt="Virus v sistemu">
+
+</div>
+
+        <p class="muted">Vpiši kodo:</p>
+
+        <div class="row">
+          <input id="code" inputmode="numeric" autocomplete="off" placeholder="Koda (0/1)" />
+          <button id="btn">Odkleni</button>
+        </div>
+
+        <div class="msg bad" id="bad">❌ Napačna koda.</div> 
+	<div class="icons center">
+		<img src="Mr_Error.png" alt="Napaka sistema">
+	</div>	
+      </div>
+
+      <!-- ODKLENJENO: navodila -->
+      <div id="content">
+        <div class="msg ok" id="ok">✅ Odklenjeno! Nadaljuj zadnjo nalogo.</div>
+
+        <div class="box">
+		<div class="icons">
+  <img src="Mr_Virus2.png" alt="Virus – klikni">
+
+  <img src="Mr_Disketa.png" alt="Shrani sistem">
+
+</div>
+
+          <h2 style="margin:0 0 6px 0;">Popravilo 5 – Rešimo šolo 🎉</h2>
+          <p class="muted" style="margin:0 0 10px 0;">
+            Če si prišel/prišlala do sem, pomeni, da je virus skoraj premagan.
+            Zdaj dokončaj misijo:
+          </p>
+		  		<div class="icons left">		
+			    <img src="Mr_Kabel.png" alt="Poškodovan kabel">
+		</div>
+          <ul>
+            <li>Na računalniku imaš odprt program v Scratchu, ki ga je virus uničil.</li>
+			<li>Poveži delčke programa med seboj tako, da se bo program pravilno izvedel ob kliku na zeleno zastavico.</li>
+			<li><strong>❗ Premakniti moraš le dva delčka, vse ostalo pusti pri miru.</strong> </li>
+		 </ul>
+        </div>
+		<div class="icons right">		
+			  <img src="Mr_Ovira2.png" alt="Ovire v sistemu" left-side>
+		</div>
+            <p>Ko je <strong>program</strong> pravilno <strong>popravljen</strong>, ga povečaj (klikni <img src="ikona_povecaj.png" alt="Povečaj">) in <strong>zaženi (klikni <img src="ikona_zazeni.png" alt="Zaženi">)</strong>.</p>
+
+            <br>
+			<h3>➡  Pojdi <strong>z miško nad virus, da ga preženeš</strong> in <strong>nato vklopi sistem.</strong></h3>
+         
+      </div>
+
+    </div>
+  </div>
+
+<script>
+  const CORRECT = "00101101";
+
+  const codeEl = document.getElementById("code");
+  const btn = document.getElementById("btn");
+  const bad = document.getElementById("bad");
+  const lock = document.getElementById("lock");
+  const content = document.getElementById("content");
+  const ok = document.getElementById("ok");
+
+  function unlock(){
+    lock.style.display = "none";
+    content.style.display = "block";
+    ok.style.display = "block";
+  }
+
+  btn.addEventListener("click", () => {
+    const v = (codeEl.value || "").trim();
+    if(v === CORRECT){
+      bad.style.display = "none";
+      unlock();
+    } else {
+      bad.style.display = "block";
+    }
+  });
+
+  codeEl.addEventListener("keydown", (e) => {
+    if(e.key === "Enter") btn.click();
+  });
+</script>
+</body>
+</html>
+
