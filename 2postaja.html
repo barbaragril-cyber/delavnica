@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Postaja 2 – Popravilo 2</title>
+  <style>
+    body{
+      margin:0;
+      font-family: system-ui, Arial, sans-serif;
+      background:#0b0f14;
+      color:#eef2f7;
+      line-height:1.5;
+      padding:24px;
+    }
+    .wrap{ max-width: 900px; margin: 0 auto; }
+    .card{
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px;
+      padding: 18px 18px;
+      margin: 14px 0;
+    }
+    h1{ margin: 0 0 10px; font-size: clamp(1.5rem, 3vw, 2rem); }
+    h2{ margin: 14px 0 8px; font-size: 1.15rem; }
+    .muted{ opacity:.85; }
+    .note{
+      background: rgba(255,255,255,0.08);
+      border: 1px dashed rgba(255,255,255,0.25);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin-top: 10px;
+    }
+    .imgbox{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+      align-items:flex-start;
+      justify-content:space-between;
+    }
+    img{
+      width: min(520px, 100%);
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background:#111;
+    }
+    .steps ol{ margin: 8px 0 0 18px; }
+    .q{
+      font-size:1.05rem;
+      margin-top: 10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+    .answers{
+      margin: 10px 0 0 0;
+      display:grid;
+      gap:8px;
+    }
+    .answers div{
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(0,0,0,0.18);
+    }
+    .tag{
+      display:inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+      font-size: .9rem;
+      margin-right: 6px;
+    }
+    .cta{
+      font-weight:700;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+      margin-top: 10px;
+    }
+    code, pre{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    footer{ margin-top: 12px; font-size: .95rem; opacity: .8; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="card">
+      <h1>Popravilo 2 🔤⚠️</h1>
+      <p class="muted">
+        Sistem za črke je okvarjen. Računalnik črke zapisuje z <strong>0</strong> in <strong>1</strong> (po 5 znakov skupaj).
+        Nekdo je pustil pomembno sporočilo na listku … a je poškodovan.
+      </p>
+      <div class="note">
+        <span class="tag">Pomembno</span>
+        Kodirna tabela (0/1 → črke) je <strong>nekje v razredu</strong>. Poišči jo!
+      </div>    </div>
+
+    <div class="card">
+      <h2>1) Naloga – ČRKE (poškodovan listek)</h2>
+
+      <div class="imgbox">
+        <!-- Preimenuj datoteko po želji. Tukaj pričakujem, da je slika v isti mapi kot HTML. -->
+        <img src="listek.png" alt="Poškodovan listek z binarnim zapisom (čitljive so le prve tri skupine)" />
+
+        <div class="steps" style="flex:1; min-width:260px;">
+          <p><strong>Navodilo:</strong></p>
+          <ol>
+            <li>Poglej listič: beremo po <strong> 5 bitov skupaj</strong> (npr. <code>00001</code>) za eno črko.</li>
+            <li>V razredu poišči <strong>kodirno tabelo</strong>.</li>
+            <li>Poišči ujemanje in zapiši prve tri črke.</li>
+            <li>Te črke povedo <strong>začetek imena naslednje učilnice</strong>.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="cta">
+        ✅ Ko dobiš 3 črke, jih zapiši na list. Nato reši vprašanje spodaj za številko učilnice.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>2) Naloga – ŠTEVILKA UČILNICE</h2>
+      <div class="q">
+        <p style="margin:0 0 10px 0;"><strong>Vprašanje:</strong> Kaj so »možgani« računalnika?</p>
+
+        <div class="answers">
+          <div><span class="tag">1</span> Monitor</div>
+          <div><span class="tag">2</span> Tipkovnica</div>
+          <div><span class="tag">3</span> <strong>Procesor</strong></div>
+        </div>
+
+        <p style="margin:12px 0 0 0;">
+          👉 <strong>Število pred pravilnim odgovorom je številka učilnice.</strong>
+        </p>
+      </div>
+
+      <footer>
+        Poveži skupaj: <strong>3 črke (iz listka)</strong> + <strong>številka (iz vprašanja)</strong> → naslednja učilnica.
+      </footer>
+    </div>
+
+  </div>
+</body>
+</html>

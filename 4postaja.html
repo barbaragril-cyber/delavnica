@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Postaja 4 – Program (Scratch delčki)</title>
+  <style>
+    :root{
+      --bg:#f7f7fb;
+      --card:#ffffff;
+      --border:#e5e7eb;
+      --text:#111;
+      --muted:#444;
+    }
+    body{
+      margin:0;
+      font-family: system-ui, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.5;
+      padding:24px;
+    }
+    .wrap{ max-width: 970px; margin:0 auto; }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:18px;
+      margin:14px 0;
+    }
+    h1{ margin:0 0 8px; font-size: clamp(1.4rem, 2.8vw, 1.9rem); }
+    h2{ margin: 14px 0 8px; font-size: 1.15rem; }
+    .muted{ color:var(--muted); }
+
+.imgbox{
+  margin-top:12px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:14px;
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+}
+
+.imgbox img{
+  display:block;
+  max-width:55%;
+  height:auto;
+}
+
+.program-info{
+  flex:1;
+  background:#f8fafc;
+  border:1px dashed #cbd5e1;
+  border-radius:12px;
+  padding:14px;
+  font-size:1rem;
+}
+.program-info p{
+  margin:0 0 10px 0;
+}
+
+    .grid{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap:12px;
+    }
+    .tile{
+      border:1px solid var(--border);
+      border-radius:14px;
+      background:#fff;
+      padding:10px;
+    }
+    .tile img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+    .cap{
+      margin-top:8px;
+      font-weight:700;
+      font-size:0.95rem;
+      color:#222;
+    }
+    .note{
+      background:#f8fafc;
+      border:1px dashed #cbd5e1;
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-top: 12px;
+    }
+    .small{ font-size:0.95rem; }
+	
+	.program-info .ok{
+  color:#166534;
+  font-weight:700;
+}
+.program-info .bad{
+  color:#991b1b;
+  font-weight:700;
+}
+
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <div class="card">
+    <h1>Popravilo 4: izvajanje programa 🧠</h1>
+    <p class="muted">
+      Računalniški sistem zdaj že zna pravilno brati <strong>števila, znake in slike</strong>.<br>
+      Ima pa še težave pri <strong>izvajanju programov</strong>.<br>
+      Spodaj je že pripravljen program <strong>– ti ga moraš natančno izvesti</strong>, da ugotoviš, <strong>kam te vodi</strong>.
+    </p>
+
+    <div class="note small">
+      <h3>Priprava</h3>
+		<ul>Pred tabo je mreža (talna ali namizna).</ul> 
+		<ul><img src="pr_start.png" width=80px alt="START" />Robot (učenec ali figurica) stoji na polju START.</ul>
+		<ul><strong>Natančno sledi navodilom programa:</strong></ul>
+		<ul><img src="pr_naprej.png" width=80px alt="naprej" />Pri ukazu <strong>naprej</strong>, se premakneš <strong>za eno polje naprej</strong> v smeri kamor gledaš.</ul>
+		<ul><img src="pr_levo.png" width=120px alt="obrni se levo" /> <img src="pr_desno.png" width=120px alt="obrni se desno" />Pri ukazu <strong>obrni se levo ali desno</strong>, se samo obrneš in pri tem <strong>ostaneš v istem polju</strong>.</ul>
+		<ul><img src="pr_ovira.png" width=120px alt="preskoči oviro" /><strong>Preskoči oviro</strong> pomeni: oviro preskočiš in pri tem <strong>ostaneš v istem polju</strong>. </ul>
+		<ul><img src="pr_preberi.png" width=140px alt="preberi ime učilnice" />Preberi ime učilnice<strong>napisane na pokju, na katerem se nahajaš</strong>. </ul>
+		
+    </div>
+  </div>
+
+  <!-- 1) CELOTEN PROGRAM (slika) -->
+  <div class="card">
+  <h2>Program</h2>
+
+  <div class="imgbox" aria-label="Slika programa">
+    <img src="program.png" alt="Program v Scratch delčkih (Postaja 4)" />
+
+<div class="program-info">
+  <p><strong>🧩 Tu je pripravljen program.</strong></p>
+
+  <p class="bad">
+    ❌ Če ga izvedeš <strong>napačno</strong>, prideš v <strong>napačno učilnico</strong>.
+  </p>
+
+  <p class="ok">
+    ✅ Če ga izvedeš <strong>pravilno</strong>, <strong>nadaljuješ misijo</strong>.
+  </p>
+</div>
+
+  </div>
+</div>
+  
+
+</div>
+</body>
+</html>
+

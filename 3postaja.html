@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Postaja 3 – Bitna slika (0–3)</title>
+  <style>
+    body{
+      margin:0;
+      font-family: system-ui, Arial, sans-serif;
+      background:#f7f7fb;
+      color:#111;
+      line-height:1.5;
+      padding:24px;
+    }
+    .wrap{ max-width: 1100px; margin:0 auto; }
+    .card{
+      background:#fff;
+      border:1px solid #e5e7eb;
+      border-radius:16px;
+      padding:18px;
+      margin:14px 0;
+    }
+    h1{ margin:0 0 8px; font-size: clamp(1.4rem, 2.8vw, 1.9rem); }
+    h2{ margin: 14px 0 8px; font-size: 1.15rem; }
+    .muted{ color:#444; }
+
+    .layout{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+    }
+    @media (min-width: 920px){
+      .layout{ grid-template-columns: 1fr 1fr; align-items:start; }
+    }
+
+    .legend{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .chip{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid #e5e7eb;
+      background:#f8fafc;
+      font-weight:700;
+    }
+    .swatch{
+      width:20px; height:20px;
+      border-radius:6px;
+      border:1px solid #94a3b8;
+    }
+
+    pre{
+      margin:10px 0 0 0;
+      padding:12px 14px;
+      background:#0b1220;
+      color:#e6edf7;
+      border-radius:14px;
+      overflow:auto;
+      border:1px solid #1f2a44;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    /* interaktivna mreža */
+    .toolrow{
+      display:flex; gap:10px; flex-wrap:wrap;
+      align-items:center; margin-top:10px;
+    }
+    .btn{
+      appearance:none;
+      border:1px solid #e5e7eb;
+      background:#f8fafc;
+      border-radius:12px;
+      padding:10px 12px;
+      cursor:pointer;
+      font-weight:700;
+    }
+    .btn:hover{ background:#eef2f7; }
+    .active{
+      outline:3px solid rgba(59,130,246,.35);
+      background:#eaf2ff;
+      border-color:#bcd6ff;
+    }
+
+    .grid{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: repeat(8, 44px);
+      grid-auto-rows: 44px;
+      gap:3px;
+      align-content:start;
+      justify-content:start;
+      user-select:none;
+      touch-action: none;
+    }
+    .cell{
+      border:1px solid #cbd5e1;
+      border-radius:8px;
+      background:#ffffff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      cursor:pointer;
+    }
+    .cell small{ opacity:.75; font-weight:700; }
+
+    .note{
+      background:#f8fafc;
+      border:1px dashed #cbd5e1;
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-top: 12px;
+    }
+
+    /* preverjanje */
+    .check{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .input{
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid #cbd5e1;
+      min-width: 260px;
+      font-size: 1rem;
+    }
+    .msg{
+      margin-top:10px;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid #e5e7eb;
+      background:#fff;
+      display:none;
+      font-weight:700;
+    }
+    .ok{ border-color:#86efac; background:#f0fdf4; }
+    .bad{ border-color:#fecaca; background:#fef2f2; }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <div class="card">
+    <h1>Popravilo 3: Bitna slika 🧩</h1>
+    <p class="muted">
+      Virus je poškodoval tudi slike. Zdaj imamo le kodo s številkami. Tvoja naloga je, da iz kode pobarvaš mrežo 8 × 10 in prepoznaš motiv.
+    </p>
+
+    <div class="legend" aria-label="Legenda barv">
+      <div class="chip"><span class="swatch" style="background:#7aa6d8;"></span> 0 = modra</div>
+      <div class="chip"><span class="swatch" style="background:#23b14d;"></span> 1 = temno zelena</div>
+      <div class="chip"><span class="swatch" style="background:#5ad67a;"></span> 2 = svetlo zelena</div>
+      <div class="chip"><span class="swatch" style="background:#8b5a3c;"></span> 3 = rjava</div>
+    </div>
+
+    <div class="note">
+      <strong>Navodilo:</strong> Izberi barvo (0–3), nato klikaj (ali vleci) po kvadratkih v mreži, da jih pobarvaš.
+    </div>
+  </div>
+
+  <div class="card layout">
+    <div>
+      <h2>Koda (8 × 10)</h2>
+      <p class="muted">Vsaka vrstica ima 8 števil. Skupaj je 10 vrstic.</p>
+
+      <pre aria-label="Koda s številkami (0-3)">
+0 0 1 1 2 2 0 0
+0 1 1 1 2 2 2 0
+0 1 1 1 2 2 2 0
+0 1 1 1 2 2 2 0
+0 1 1 1 2 2 2 0
+0 0 1 1 1 1 0 0
+0 0 0 3 3 0 0 0
+0 0 0 3 3 0 0 0
+0 0 0 3 3 0 0 0
+1 1 1 1 1 1 1 1
+      </pre>
+
+      <div class="note">
+        <strong>Namig:</strong> Ko bo slika pravilno pobarvana, bo motiv namignil, kam naprej.
+      </div>
+    </div>
+
+    <div>
+      <h2>Interaktivna mreža za barvanje</h2>
+
+      <div class="toolrow" aria-label="Izbira barve">
+        <button class="btn active" data-color="0" type="button">0</button>
+        <button class="btn" data-color="1" type="button">1</button>
+        <button class="btn" data-color="2" type="button">2</button>
+        <button class="btn" data-color="3" type="button">3</button>
+        <button class="btn" id="resetBtn" type="button">Ponastavi</button>
+      </div>
+
+      <div class="grid" id="grid" aria-label="Mreža 8 krat 10"></div>
+
+      <div class="note">
+        <strong>Kam naprej?</strong> Ko prepoznaš motiv, spodaj vpiši ime učilnice.
+      </div>
+
+      <!-- NOVO: vnos učilnice + preverjanje -->
+      <div class="check" aria-label="Vnos odgovora">
+        <input class="input" id="answer" type="text" placeholder="Učilnica" />
+        <button class="btn" id="checkBtn" type="button">Preveri</button>
+      </div>
+
+      <div class="msg" id="msg"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // barvna mapa (isti odtenki kot legenda)
+  const COLORS = {
+    0: "#7aa6d8", // modra
+    1: "#23b14d", // temno zelena
+    2: "#5ad67a", // svetlo zelena
+    3: "#8b5a3c"  // rjava
+  };
+
+  const gridEl = document.getElementById("grid");
+  const buttons = Array.from(document.querySelectorAll(".btn[data-color]"));
+  const resetBtn = document.getElementById("resetBtn");
+
+  let current = 0;
+  let isPainting = false;
+
+  // 8x10 = 80 celic
+  const rows = 10, cols = 8;
+  const cells = [];
+
+  function setActiveButton(val){
+    current = Number(val);
+    buttons.forEach(b => b.classList.toggle("active", Number(b.dataset.color) === current));
+  }
+
+  function paintCell(cell){
+    cell.style.background = COLORS[current];
+    cell.dataset.value = String(current);
+    cell.innerHTML = "<small>" + current + "</small>";
+  }
+
+  function makeGrid(){
+    gridEl.innerHTML = "";
+    cells.length = 0;
+
+    for(let r=0; r<rows; r++){
+      for(let c=0; c<cols; c++){
+        const cell = document.createElement("div");
+        cell.className = "cell";
+        cell.dataset.value = "";
+        cell.innerHTML = "";
+
+        cell.addEventListener("pointerdown", (e) => {
+          e.preventDefault();
+          isPainting = true;
+          paintCell(cell);
+        });
+        cell.addEventListener("pointerenter", () => {
+          if(isPainting) paintCell(cell);
+        });
+
+        cells.push(cell);
+        gridEl.appendChild(cell);
+      }
+    }
+
+    window.addEventListener("pointerup", () => { isPainting = false; }, { once:false });
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => setActiveButton(btn.dataset.color));
+  });
+
+  resetBtn.addEventListener("click", () => {
+    cells.forEach(cell => { cell.style.background = "#ffffff"; cell.innerHTML = ""; cell.dataset.value=""; });
+  });
+
+  // init
+  makeGrid();
+  setActiveButton(0);
+
+  // PREVERJANJE ODGOVORA (narava, naravoslovje, biologija)
+  const answerEl = document.getElementById("answer");
+  const checkBtn = document.getElementById("checkBtn");
+  const msgEl = document.getElementById("msg");
+
+  const ACCEPT = new Set(["narava", "naravoslovje", "biologija", "bio", "nar", "naravoslovje in biologijo", "biologijo in naravoslovje"]);
+
+  function normalize(s){
+    return (s || "")
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, " ");
+  }
+
+  function showMsg(ok, text){
+    msgEl.style.display = "block";
+    msgEl.className = "msg " + (ok ? "ok" : "bad");
+    msgEl.textContent = text;
+  }
+
+  function check(){
+    const val = normalize(answerEl.value);
+    if (ACCEPT.has(val)){
+      showMsg(true, "✅ Pravilno! Naslednja postaja je v učilnici za naravoslovje in biologijo.");
+    } else {
+      showMsg(false, "❌ Še ne. Preveri, kaj prikazuje slika, in poskusi znova (namig: na...).");
+    }
+  }
+
+  checkBtn.addEventListener("click", check);
+  answerEl.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") check();
+  });
+</script>
+
+</body>
+</html>
