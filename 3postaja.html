@@ -91,27 +91,26 @@
     }
 
     .grid{
-      margin-top:12px;
-      display:grid;
-      grid-template-columns: repeat(8, minmax(28px, 1fr));
-      grid-auto-rows: minmax(28px, 1fr);
-      max-width: 100%;
-      gap:3px;
-      align-content:start;
-      justify-content:start;
-      user-select:none;
-      touch-action: pan-y;
-    }
-    .cell{
-      border:1px solid #cbd5e1;
-      border-radius:8px;
-      background:#ffffff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:800;
-      cursor:pointer;
-    }
+  margin-top:12px;
+  display:grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap:3px;
+  max-width: 100%;
+  touch-action: pan-y;
+}
+
+.cell{
+  aspect-ratio: 1 / 1;
+  border:1px solid #cbd5e1;
+  border-radius:8px;
+  background:#ffffff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  cursor:pointer;
+}
+
     .cell small{ opacity:.75; font-weight:700; }
 
     .note{
@@ -332,5 +331,6 @@
 
 </body>
 </html>
+
 
 
